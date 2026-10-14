@@ -69,6 +69,8 @@ public class QueueTest
             return;
         }
 
+        System.out.println(queue.getClass());
+
         // 4. Fixed-Capacity Wrap-Around Test (Checks rear < front modulo logic)
         System.out.println("  - Testing wrap-around behavior...");
         for (int i = 1; i <= 8; i++)

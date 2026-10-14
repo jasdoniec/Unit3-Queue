@@ -24,32 +24,59 @@ public class LinkedQueue<T> implements QueueInterface<T>
     public boolean empty()
     {
         // TODO: Return true if queue is empty
-        return false;
+        return front == null;
     }
 
     public T add(T item)
     {
         // TODO: Create a new LLNode with item
         // consider special case if queue is empty
-        return null;
+
+        LLNode<T> newNode = new LLNode<T>(item);
+
+        size++;
+
+        if (empty()){
+            front = newNode;
+            rear = newNode;
+            return item;
+        }
+
+        rear.setLink(newNode);
+        rear = newNode;
+        return item;
     }
 
     public T peek()
     {
         // TODO: Return info from front node without removing
         // Throw QueueUnderflowException if empty
-        return null;
+
+        if (empty()){
+            throw new QueueUnderflowException();
+        }
+
+        return front.getInfo();
     }
 
     public T remove()
     {
         // TODO: Remove front node and return its info
 
-        return null;
+        T item = peek();
+
+        front = front.getLink();
+
+        size --;
+
+        return item;
     }
 
     public void clear()
     {
         // TODO: write method
+        front = null;
+        rear = null;
+        size = 0;
     }
 }
